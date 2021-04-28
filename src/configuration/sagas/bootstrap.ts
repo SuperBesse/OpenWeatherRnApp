@@ -1,10 +1,11 @@
-import {call, fork, put, take, all} from 'redux-saga/effects';
+import {call, fork, put, take, all, spawn} from 'redux-saga/effects';
 import {
   INIT_APP_FAILURE,
   INIT_APP_START,
   INIT_APP_SUCCESS,
 } from 'configuration/actions/AppActions';
 import {reduxStore as store} from 'configuration/store/ReduxStore';
+import weatherSaga from 'weather/Saga';
 
 function* bootstrap() {
   try {
@@ -30,9 +31,7 @@ function* bootstrap() {
 }
 
 function* startApp() {
-  yield all([
-    //spawn(weatherSaga()),
-  ]);
+  yield all([spawn(weatherSaga())]);
 }
 
 export default function* () {

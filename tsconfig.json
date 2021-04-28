@@ -3,6 +3,7 @@
       "baseUrl": ".",
       "paths": {
         "configuration/*": ["./src/configuration/*"],
+        "weather/*": ["./src/weather/*"],
       },
       "allowJs": true,
       "allowSyntheticDefaultImports": true,
