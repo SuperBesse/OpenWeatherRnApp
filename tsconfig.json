@@ -1,5 +1,9 @@
 {
     "compilerOptions": {
+      "baseUrl": ".",
+      "paths": {
+        "configuration/*": ["./src/configuration/*"],
+      },
       "allowJs": true,
       "allowSyntheticDefaultImports": true,
       "esModuleInterop": true,
