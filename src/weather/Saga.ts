@@ -1,5 +1,5 @@
 import {
-  WEATHER_LOADING_INSEE,
+  WEATHER_LOADING_CITY,
   WEATHER_SUCCESS,
   WEATHER_FAILURE,
 } from 'weather/Actions';
@@ -7,10 +7,10 @@ import {
 import {ActionType} from 'configuration/actions/Actions';
 import {call, put, takeEvery} from 'redux-saga/effects';
 import WeatherApi from 'weather/WeatherApi';
+import {WeatherData} from './Types';
 
 interface TownData {
-  inseeCode: string;
-  town: string;
+  cityName: string;
 }
 
 interface LocationData {
@@ -22,19 +22,15 @@ export default function () {
   const weatherApi = new WeatherApi();
 
   return function* weatherSaga(): Generator<any> {
-    yield takeEvery(WEATHER_LOADING_INSEE, fetchContent);
+    yield takeEvery(WEATHER_LOADING_CITY, fetchContent);
   };
 
   function* fetchContent(action: ActionType<TownData>) {
     try {
       const {
-        payload: {inseeCode, town},
+        payload: {cityName},
       } = action;
-      const result = yield call(
-        weatherApi.fetchWeatherContent,
-        inseeCode,
-        town,
-      );
+      const result = yield call(weatherApi.fetchWeatherContent, cityName) as WeatherData;
       yield put({
         type: WEATHER_SUCCESS,
         payload: {weatherResult: result},

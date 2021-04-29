@@ -1,35 +1,21 @@
 import type {WeatherData} from 'weather/types';
+import {getWeatherUrlForCity} from 'weather/utils';
 
-const OPENWEATHERMAP_API_KEY = '5b2286185b4a9c92c8e960d3206dac5d';
+const OPEN_WEATHERMAP_API_KEY = '5b2286185b4a9c92c8e960d3206dac5d';
 
 type WeatherApiType = {
-  fetchWeatherContent: (
-    inseeCode: string,
-    town: string,
-  ) => Promise<WeatherData>;
-  fetchWeatherContentWithLocation: (
-    lat: string,
-    lng: string,
-  ) => Promise<WeatherData>;
+  fetchWeatherContent: (cityName: string) => Promise<WeatherData>;
 };
 
 export default function WeatherApi(): WeatherApiType {
-  return {fetchWeatherContent, fetchWeatherContentWithLocation};
+  return {fetchWeatherContent};
 
-  function fetchWeatherContentWithLocation(
-    lat: string,
-    lng: string,
-  ): Promise<WeatherData> {
-    return undefined;
-  }
-
-  function fetchWeatherContent(
-    inseeCode: string,
-    town: string,
-  ): Promise<WeatherData> {
-    return fetch(
-      `https://api.openweathermap.org/data/2.5/weather?q=${'Bordeaux'}&appid=${OPENWEATHERMAP_API_KEY}`,
-    )
+  function fetchWeatherContent(cityName: string): Promise<WeatherData> {
+    const weatherApiurl = getWeatherUrlForCity(
+      cityName,
+      OPEN_WEATHERMAP_API_KEY,
+    );
+    return fetch(weatherApiurl)
       .then(response => response.json())
       .then(weatherJson => {
         return weatherJson;

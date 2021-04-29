@@ -8,6 +8,9 @@ module.exports = {
         alias: {
           configuration: './src/configuration',
           weather: './src/weather',
+          home: './src/home',
+          settings: './src/settings',
+          icons: './icons',
         },
       },
     ],
