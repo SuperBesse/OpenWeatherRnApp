@@ -35,7 +35,24 @@ interface CityWidgetProps {
 
 const CityWidget = (props: CityWidgetProps) => {
   const {weatherData} = props;
-  const hasIcon = weatherData.weather && weatherData.weather.length > 0;
+
+  const _renderWeatherIcon = () => {
+    if (weatherData.weather && weatherData.weather.length > 0) {
+      const icon = weatherData.weather[0].icon;
+      if (!icon) {
+        return null;
+      }
+      return (
+        <Image
+          resizeMode={'cover'}
+          source={{uri: getIconImageUrl(icon)}}
+          style={styles.icon}
+        />
+      );
+    }
+    return null;
+  };
+
   return (
     <View style={styles.container}>
       <View style={styles.column}>
@@ -44,7 +61,7 @@ const CityWidget = (props: CityWidgetProps) => {
         </Text>
         <Text style={styles.city}>{weatherData.name}</Text>
       </View>
-      {hasIcon && <Image resizeMode={'cover'} source={{uri: getIconImageUrl(weatherData.weather[0].icon)}} style={styles.icon}/>}
+      {_renderWeatherIcon()}
     </View>
   );
 };

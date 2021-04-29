@@ -35,7 +35,7 @@ const TopBarActions = (props: TopBarActionsProps) => {
     <View style={[style, styles.rowContainer]}>
       <IconButton
         style={styles.iconContainer}
-        icon={require('icons/icons8-settings.png')}
+        icon={require('icons/icons8-settings_filled.png')}
         onPress={onSettingsPress}
       />
       <View style={styles.spacer} />
