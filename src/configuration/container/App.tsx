@@ -15,6 +15,8 @@ import {initApp} from 'configuration/actions/AppActions';
 import {fetchWeatherForCity} from 'weather/Actions';
 import HomeScreen from 'home/HomeScreen';
 import SettingsScreen from 'settings/SettingsScreen';
+import SearchScreen from 'search/SearchScreen';
+
 import {BACKGROUND_COLOR} from 'configuration/style/Theme';
 
 export const HOME_SCREEN_NAME = 'Home';
@@ -41,7 +43,7 @@ const App: React.FunctionComponent = () => {
           />
           <Stack.Screen
             name={ADD_CITY_SCREEN_NAME}
-            component={SettingsScreen}
+            component={SearchScreen}
             options={{headerShown: false}}
           />
           <Stack.Screen

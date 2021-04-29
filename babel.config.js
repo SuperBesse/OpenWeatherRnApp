@@ -11,6 +11,7 @@ module.exports = {
           home: './src/home',
           settings: './src/settings',
           icons: './icons',
+          search: './src/search',
         },
       },
     ],
