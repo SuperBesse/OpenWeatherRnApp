@@ -6,6 +6,7 @@ module.exports = {
       {
         extensions: ['.js', '.ios.js', '.android.js', '.png', 'ts', 'tsx'],
         alias: {
+          src: './src',
           configuration: './src/configuration',
           weather: './src/weather',
           home: './src/home',

@@ -2,6 +2,7 @@
     "compilerOptions": {
       "baseUrl": ".",
       "paths": {
+        "src": ["./src/*"],
         "configuration/*": ["./src/configuration/*"],
         "weather/*": ["./src/weather/*"],
         "home/*": ["./src/home/*"],

@@ -2,42 +2,42 @@ import {
   SEARCH_CITY_LOADING,
   SEARCH_CITY_SUCCESS,
   SEARCH_CITY_FAILURE,
-} from 'weather/Actions';
+  SEARCH_CITY_START,
+} from './SearchActions';
 
 import {ActionType} from 'configuration/actions/Actions';
 import {call, put, takeEvery} from 'redux-saga/effects';
-import WeatherApi from 'weather/WeatherApi';
-import {WeatherData} from './Types';
+import SearchApi from './SearchApi';
 
 interface TownData {
-  cityName: string;
-}
-
-interface LocationData {
-  lat: string;
-  lng: string;
+  input: string;
 }
 
 export default function () {
-  const weatherApi = new WeatherApi();
+  const searchApi = new SearchApi();
 
   return function* weatherSaga(): Generator<any> {
-    yield takeEvery(WEATHER_LOADING_CITY, fetchContent);
+    yield takeEvery(SEARCH_CITY_START, searchContent);
   };
 
-  function* fetchContent(action: ActionType<TownData>) {
+  function* searchContent(action: ActionType<TownData>) {
     try {
       const {
-        payload: {cityName},
+        payload: {input},
       } = action;
-      const result = yield call(weatherApi.fetchWeatherContent, cityName) as WeatherData;
       yield put({
-        type: WEATHER_SUCCESS,
-        payload: {weatherResult: result},
+        type: SEARCH_CITY_LOADING,
+        payload: {input: input},
+      });
+
+      const result = yield call(searchApi.findCities, input);
+      yield put({
+        type: SEARCH_CITY_SUCCESS,
+        payload: {citiesResult: result},
       });
     } catch (err) {
       yield put({
-        type: WEATHER_FAILURE,
+        type: SEARCH_CITY_FAILURE,
       });
     }
   }

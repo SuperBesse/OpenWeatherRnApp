@@ -6,6 +6,7 @@ import {
 } from 'configuration/actions/AppActions';
 import {reduxStore as store} from 'configuration/store/ReduxStore';
 import weatherSaga from 'weather/Saga';
+import searchSaga from 'search/SearchSaga';
 
 function* bootstrap() {
   try {
@@ -31,7 +32,7 @@ function* bootstrap() {
 }
 
 function* startApp() {
-  yield all([spawn(weatherSaga())]);
+  yield all([spawn(weatherSaga()), spawn(searchSaga())]);
 }
 
 export default function* () {
