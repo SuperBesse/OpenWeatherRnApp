@@ -3,6 +3,8 @@ import {WeatherData} from 'weather/Types';
 import {View, StyleSheet} from 'react-native';
 import CityWidget from './CityWidget';
 import IconButton from 'home/IconButton';
+import {useDispatch} from 'react-redux';
+import {removeCity} from 'home/CitiesActions';
 
 const styles = StyleSheet.create({
   container: {
@@ -25,9 +27,9 @@ interface CityCellProps {
 
 const DeleteCityCell: React.FunctionComponent<CityCellProps> = props => {
   const {weatherData} = props;
-
+  const dispatch = useDispatch();
   const _onDeletePress = () => {
-
+    dispatch(removeCity(weatherData.name));
   };
 
   return (

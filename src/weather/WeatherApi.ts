@@ -15,7 +15,12 @@ export default function WeatherApi(): WeatherApiType {
       Config.OPEN_WEATHERMAP_API_KEY,
     );
     return fetch(weatherApiurl)
-      .then(response => response.json())
+      .then(response => {
+        if (response.status === 200) {
+          return response.json();
+        }
+        return undefined;
+      })
       .then(weatherJson => {
         return weatherJson;
       })

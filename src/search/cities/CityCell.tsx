@@ -4,6 +4,8 @@ import {CityResult} from '../Types';
 import {getFlagUrl} from 'src/search/SearchUtils';
 import IconButton from 'home/IconButton';
 import {BACKGROUND_COLOR} from 'configuration/style/Theme';
+import {useDispatch} from 'react-redux';
+import {addCity} from 'home/CitiesActions';
 
 interface Props {
   city: CityResult;
@@ -49,11 +51,12 @@ const styles = StyleSheet.create({
 const CityCell: React.FunctionComponent<Props> = props => {
   const {city} = props;
   const flagurl = getFlagUrl(city.country.toLowerCase());
-  
-  const _onAddPress = () => {
+  const dispatch = useDispatch();
 
-  }
-  
+  const _onAddPress = () => {
+    dispatch(addCity(city.name));
+  };
+
   return (
     <View style={styles.container}>
       <View style={styles.infoContainer}>

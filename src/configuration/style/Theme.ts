@@ -1,1 +1,2 @@
 export const BACKGROUND_COLOR = '#555E77';
+export const MODAL_BACKGROUND_COLOR = '#3D3E4F';

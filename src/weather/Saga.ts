@@ -31,6 +31,11 @@ export default function () {
         payload: {cityName},
       } = action;
       const result = yield call(weatherApi.fetchWeatherContent, cityName) as WeatherData;
+      if (!result) {
+        yield put({
+          type: WEATHER_FAILURE,
+        });
+      }
       yield put({
         type: WEATHER_SUCCESS,
         payload: {weatherResult: result},

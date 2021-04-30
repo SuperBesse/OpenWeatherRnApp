@@ -6,18 +6,19 @@ import {useSelector, shallowEqual, useDispatch} from 'react-redux';
 import {AppState} from 'configuration/reducers';
 import CityCell from './cities/CityCell';
 import {CityResult} from './Types';
+import {MODAL_BACKGROUND_COLOR} from 'configuration/style/Theme';
 
 const styles = StyleSheet.create({
   mainContainer: {
     flex: 1,
-    backgroundColor: 'white',
+    backgroundColor: MODAL_BACKGROUND_COLOR,
   },
   searchBar: {
     height: 60,
     margin: 12,
   },
   list: {
-    backgroundColor: 'white',
+    backgroundColor: MODAL_BACKGROUND_COLOR,
     flex: 1,
   },
 });

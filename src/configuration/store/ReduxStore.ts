@@ -16,7 +16,7 @@ const persistConfig = {
   storage: AsyncStorage,
   stateReconciler: autoMergeLevel2,
   debug: __DEV__,
-  whitelist: ['localState'],
+  whitelist: ['citiesState'],
 };
 
 const persistedReducer = persistReducer(persistConfig, indexReducer);

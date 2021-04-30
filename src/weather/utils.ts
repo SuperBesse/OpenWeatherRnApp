@@ -1,4 +1,7 @@
 export const formatTemperature = (temp: number): string => {
+  if (!temp) {
+    return '';
+  }
   return temp.toFixed(1) + '°C';
 };
 

@@ -57,7 +57,7 @@ const CityWidget = (props: CityWidgetProps) => {
     <View style={styles.container}>
       <View style={styles.column}>
         <Text style={styles.temperature}>
-          {formatTemperature(weatherData.main.temp)}
+          {formatTemperature(weatherData?.main?.temp)}
         </Text>
         <Text style={styles.city}>{weatherData.name}</Text>
       </View>

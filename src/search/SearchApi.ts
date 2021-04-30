@@ -16,9 +16,8 @@ export default function SearchApi(): SearchApiType {
     );
     return fetch(findCitiesApiurl)
       .then(response => {
-        console.log(response);
         if (response.status === 200) {
-          return response.json();  
+          return response.json();
         }
         return [];
       })
