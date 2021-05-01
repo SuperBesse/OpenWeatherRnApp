@@ -29,21 +29,28 @@ const SearchScreen: React.FunctionComponent<Props> = () => {
   const dispatch = useDispatch();
   const _onSearchButtonPress = (input: string) => {
     dispatch(searchCity(input));
-    console.log(input);
   };
 
-  const cities = useSelector((state: AppState) => {
+  const foundCities = useSelector((state: AppState) => {
     return state.searchState.results;
   }, shallowEqual);
 
+  const savedCities = useSelector((state: AppState) => {
+    return state.citiesState.cities;
+  }, shallowEqual);
+
   const _displayResult = () => {
-    if (!cities) {
+    if (!foundCities) {
       return null;
     }
     return (
       <View style={styles.list}>
-        {cities.map((c: CityResult) => (
-          <CityCell key={c.name} city={c} />
+        {foundCities.map((c: CityResult) => (
+          <CityCell
+            key={c.name}
+            city={c}
+            disabledAddButton={savedCities.includes(c.name)}
+          />
         ))}
       </View>
     );

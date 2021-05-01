@@ -9,6 +9,7 @@ import {addCity} from 'home/CitiesActions';
 
 interface Props {
   city: CityResult;
+  disabledAddButton: boolean;
 }
 
 const styles = StyleSheet.create({
@@ -49,7 +50,7 @@ const styles = StyleSheet.create({
 });
 
 const CityCell: React.FunctionComponent<Props> = props => {
-  const {city} = props;
+  const {city, disabledAddButton} = props;
   const flagUrl = getFlagUrl(city.country.toLowerCase());
   const dispatch = useDispatch();
 
@@ -68,6 +69,7 @@ const CityCell: React.FunctionComponent<Props> = props => {
         />
         <View style={styles.spacer} />
         <IconButton
+          disabled={disabledAddButton}
           style={styles.addContainer}
           icon={require('icons/icons8-add.png')}
           onPress={() => _onAddPress()}
@@ -75,6 +77,10 @@ const CityCell: React.FunctionComponent<Props> = props => {
       </View>
     </View>
   );
+};
+
+CityCell.defaultProps = {
+  disabledAddButton: false,
 };
 
 export default CityCell;
