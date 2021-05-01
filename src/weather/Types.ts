@@ -10,11 +10,19 @@ export interface WeatherData {
   visibility: number;
   wind: WindWeatherData;
   clouds: CloudsWeatherData;
-  sys: Object;
+  sys: System;
   timezone: number;
   id: number;
   name: string;
   cod: number;
+}
+
+export interface System {
+  type: number;
+  id: number;
+  country: string;
+  sunrise: number;
+  sunset: number;
 }
 
 export interface Coordinates {

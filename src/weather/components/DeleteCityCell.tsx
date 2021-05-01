@@ -13,10 +13,13 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     alignItems: 'center',
   },
+  infoContainer: {
+    flex: 1,
+  },
   deleteContainer: {
     marginLeft: 20,
-    width: 60,
-    height: 60,
+    width: 40,
+    height: 40,
     alignSelf: 'center',
   },
 });
@@ -34,7 +37,11 @@ const DeleteCityCell: React.FunctionComponent<CityCellProps> = props => {
 
   return (
     <View style={styles.container}>
-      <CityWidget key={weatherData.name} weatherData={weatherData} />
+      <CityWidget
+        style={styles.infoContainer}
+        key={weatherData.name}
+        weatherData={weatherData}
+      />
       <IconButton
         style={styles.deleteContainer}
         icon={require('icons/icons8-delete_sign.png')}

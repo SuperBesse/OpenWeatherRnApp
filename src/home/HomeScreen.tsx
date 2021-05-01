@@ -19,6 +19,10 @@ const styles = StyleSheet.create({
   actionsContainer: {
     alignItems: 'flex-start',
   },
+  cityContainer: {
+    marginHorizontal: 12,
+    marginVertical: 6,
+  },
 });
 
 interface Props {
@@ -29,8 +33,6 @@ const HomeScreen: React.FunctionComponent<Props> = ({navigation}: Props) => {
   const weathers = useSelector((state: AppState) => {
     return state.weatherState.weathers;
   }, shallowEqual);
-
-  console.log(weathers);
 
   const _addCityAction = () => {
     navigation.navigate(ADD_CITY_SCREEN_NAME);
@@ -48,7 +50,13 @@ const HomeScreen: React.FunctionComponent<Props> = ({navigation}: Props) => {
         onSettingsPress={_settingsAction}
       />
       {weathers &&
-        weathers.map(w => <CityWidget key={w.name} weatherData={w} />)}
+        weathers.map(w => (
+          <CityWidget
+            style={styles.cityContainer}
+            key={w.name}
+            weatherData={w}
+          />
+        ))}
     </View>
   );
 };

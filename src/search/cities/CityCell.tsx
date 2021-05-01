@@ -50,7 +50,7 @@ const styles = StyleSheet.create({
 
 const CityCell: React.FunctionComponent<Props> = props => {
   const {city} = props;
-  const flagurl = getFlagUrl(city.country.toLowerCase());
+  const flagUrl = getFlagUrl(city.country.toLowerCase());
   const dispatch = useDispatch();
 
   const _onAddPress = () => {
@@ -64,7 +64,7 @@ const CityCell: React.FunctionComponent<Props> = props => {
         <Image
           style={styles.flag}
           resizeMode={'cover'}
-          source={{uri: flagurl}}
+          source={{uri: flagUrl}}
         />
         <View style={styles.spacer} />
         <IconButton

@@ -39,7 +39,7 @@ export default function () {
 
     yield put({
       type: ADD_CITY,
-      payload: {city: cityName},
+      payload: {cityName: cityName},
     });
     yield put(fetchWeatherForCity(cityName));
   }

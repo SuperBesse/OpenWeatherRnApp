@@ -3,12 +3,13 @@ import {StyleSheet, View} from 'react-native';
 import {AppState} from 'configuration/reducers';
 import {useSelector, shallowEqual} from 'react-redux';
 import DeleteCityCell from 'weather/components/DeleteCityCell';
+import {MODAL_BACKGROUND_COLOR} from 'configuration/style/Theme';
 
 const styles = StyleSheet.create({
   mainContainer: {
     flex: 1,
     alignItems: 'center',
-    backgroundColor: 'white',
+    backgroundColor: MODAL_BACKGROUND_COLOR,
   },
 });
 

@@ -11,17 +11,13 @@ import citiesSaga from 'home/CitiesSaga';
 
 function* bootstrap() {
   try {
-    const savedState = store.getState().localState;
+    const savedState = store.getState().citiesState;
 
     yield call(startApp);
 
     yield put({
       type: INIT_APP_SUCCESS,
-      payload: {
-        localState: {
-          ...savedState,
-        },
-      },
+      payload: {},
     });
   } catch (error) {
     __DEV__ && console.error(error);
