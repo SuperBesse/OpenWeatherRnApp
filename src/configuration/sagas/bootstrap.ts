@@ -8,16 +8,24 @@ import {reduxStore as store} from 'configuration/store/ReduxStore';
 import weatherSaga from 'weather/Saga';
 import searchSaga from 'src/search/SearchSaga';
 import citiesSaga from 'home/CitiesSaga';
+import {WEATHERLOADD_ALL_CITIES} from 'weather/Actions';
 
 function* bootstrap() {
   try {
-    const savedState = store.getState().citiesState;
-
     yield call(startApp);
 
     yield put({
       type: INIT_APP_SUCCESS,
       payload: {},
+    });
+
+    const savedCitiesState = store.getState().citiesState;
+    //launch weather data for all saved cities
+    yield put({
+      type: WEATHERLOADD_ALL_CITIES,
+      payload: {
+        cities: savedCitiesState.cities,
+      },
     });
   } catch (error) {
     __DEV__ && console.error(error);
