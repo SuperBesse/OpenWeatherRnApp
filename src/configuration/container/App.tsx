@@ -12,10 +12,9 @@ import {NavigationContainer} from '@react-navigation/native';
 import {createStackNavigator} from '@react-navigation/stack';
 import {useDispatch} from 'react-redux';
 import {initApp} from 'configuration/actions/AppActions';
-import {fetchWeatherForCity} from 'weather/Actions';
 import HomeScreen from 'home/HomeScreen';
 import SettingsScreen from 'settings/SettingsScreen';
-import SearchScreen from 'search/SearchScreen';
+import SearchScreen from 'src/search/SearchScreen';
 
 import {BACKGROUND_COLOR} from 'configuration/style/Theme';
 
@@ -29,10 +28,10 @@ const App: React.FunctionComponent = () => {
   const dispatch = useDispatch();
   useEffect(() => {
     dispatch(initApp());
-    dispatch(fetchWeatherForCity('montpellier'));
   }, [dispatch]);
 
   return (
+    // eslint-disable-next-line react-native/no-inline-styles
     <SafeAreaView style={{flex: 1, backgroundColor: BACKGROUND_COLOR}}>
       <NavigationContainer>
         <Stack.Navigator mode="modal">
