@@ -51,7 +51,7 @@ const styles = StyleSheet.create({
 
 const CityCell: React.FunctionComponent<Props> = props => {
   const {city, disabledAddButton} = props;
-  const flagUrl = getFlagUrl(city.country.toLowerCase());
+  const flagUrl = getFlagUrl(city.country);
   const dispatch = useDispatch();
 
   const _onAddPress = () => {

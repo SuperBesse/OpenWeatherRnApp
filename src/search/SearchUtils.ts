@@ -3,5 +3,5 @@ export const getFindCitiesUrl = (input: string, apiKey: string): string => {
 };
 
 export const getFlagUrl = (locale: string) => {
-  return `https://flagcdn.com/32x24/${locale}.png`;
+  return `https://flagcdn.com/32x24/${locale.toLowerCase()}.png`;
 };

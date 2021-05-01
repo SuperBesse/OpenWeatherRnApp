@@ -2,7 +2,7 @@ export const formatTemperature = (temp: number): string => {
   if (!temp) {
     return '';
   }
-  return temp.toFixed(1) + '°C';
+  return temp.toFixed(0) + '°C';
 };
 
 export const getIconImageUrl = (iconId: string): string => {

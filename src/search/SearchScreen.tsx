@@ -1,4 +1,4 @@
-import React, {useRef} from 'react';
+import React, {useRef, useState} from 'react';
 import {StyleSheet, View} from 'react-native';
 import SearchBar from 'react-native-search-bar';
 import {searchCity} from './SearchActions';
@@ -31,8 +31,16 @@ const SearchScreen: React.FunctionComponent<Props> = () => {
     dispatch(searchCity(input));
   };
 
+  const [input, setInput] = useState('');
+  const _onChangeText = (text: string) => {
+    setInput(text);
+  };
   const foundCities = useSelector((state: AppState) => {
-    return state.searchState.results;
+    const searchState = state.searchState;
+    if (input === searchState.input) {
+      return searchState.results;
+    }
+    return [];
   }, shallowEqual);
 
   const savedCities = useSelector((state: AppState) => {
@@ -64,6 +72,7 @@ const SearchScreen: React.FunctionComponent<Props> = () => {
         placeholder="Search"
         style={styles.searchBar}
         onSearchButtonPress={(t: string) => _onSearchButtonPress(t)}
+        onChangeText={_onChangeText}
       />
       {_displayResult()}
     </View>
