@@ -6,10 +6,12 @@ import {REMOVE_CITY} from 'home/CitiesActions';
 
 export type WeatherState = {
   weathers: WeatherData[];
+  isLoading: boolean,
 };
 
 const initialState: WeatherState = {
   weathers: [],
+  isLoading: false,
 };
 
 export default function weatherReducer(
@@ -25,14 +27,21 @@ export default function weatherReducer(
       );
       //if city is already in list, just update data
       if (existingData.length > 0) {
-        existingData[0] = weatherResult;
-        return state;
+        const index = state.weathers.indexOf(existingData[0]);
+        const currentState = [...state.weathers];
+        currentState[index] = weatherResult;
+        
+        return {...state, weathers: currentState};
       } else {
-        return {...state, weathers: [...state.weathers, weatherResult]};
+        return {
+          ...state,
+          weathers: [...state.weathers, weatherResult],
+          isLoading: false,
+        };
       }
     }
     case WEATHER_FAILURE:
-      return state;
+      return {...state, isLoading: false};
     case REMOVE_CITY: {
       const {cityName} = action.payload;
       //search existing city
