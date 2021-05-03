@@ -27,12 +27,12 @@ Weather data are loaded from [openweathermap](https://openweathermap.org/)
 
 ## Main used packages
 
-redux-saga: ES6 generators for making asynchronous flows and managing Redux side effect manager
-react-native-config: tools to configure environments var
-jest: framework for tests
-react-navigation: Routing and navigation for app screens
-redux-persist: tools for saving some store and rehydrate it on lanunching
-babel-plugin-module-resolver: tools for setuping custom alias for directories
+- redux-saga: ES6 generators for making asynchronous flows and managing Redux side effect manager
+- react-native-config: tools to configure environments var
+- jest: framework for tests
+- react-navigation: Routing and navigation for app screens
+- redux-persist: tools for saving some store and rehydrate it on lanunching
+- babel-plugin-module-resolver: tools for setuping custom alias for directories
 
 ## Next steps
 
