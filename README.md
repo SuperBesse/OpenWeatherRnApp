@@ -23,7 +23,7 @@ Weather data are loaded from [openweathermap](https://openweathermap.org/)
 3. Create a .env file and define the value of openweathermap api key (OPEN_WEATHERMAP_API_KEY = VALUE)
 4. Run `npm start -- --reset-cache` to start the server to deliver the bundle url. Make sure this is running before you start your application. 
 5. Run `cd ios && pod install && cd ..`
-5. Run `react-native run-ios` or `react-native run-android` (or launch `emrap.xcworkspace` with xcode)
+5. Run `react-native run-ios` or `react-native run-android` (or launch `OpenWeatherRNApp.xcworkspace` with xcode)
 
 ## Main used packages
 
